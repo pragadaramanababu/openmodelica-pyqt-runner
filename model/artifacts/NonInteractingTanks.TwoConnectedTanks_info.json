@@ -1,0 +1,26 @@
+{"format":"Transformational debugger info","version":1,
+"info":{"name":"NonInteractingTanks.TwoConnectedTanks","description":""},
+"variables":{
+"tank1.h":{"comment":"","kind":"state","type":"Real","unit":"","displayUnit":"","source":{"info":{"file":"/home/ramanababu/Downloads/NonInteractingTanks-20260821T053736Z-1-001/NonInteractingTanks/Tank.mo","lineStart":5,"lineEnd":5,"colStart":1,"colEnd":11}},"index":0},
+"tank2.h":{"comment":"","kind":"state","type":"Real","unit":"","displayUnit":"","source":{"info":{"file":"/home/ramanababu/Downloads/NonInteractingTanks-20260821T053736Z-1-001/NonInteractingTanks/Tank2.mo","lineStart":4,"lineEnd":4,"colStart":1,"colEnd":10}},"index":1},
+"der(tank1.h)":{"comment":"","kind":"derivative","type":"Real","unit":"","displayUnit":"","source":{"info":{"file":"/home/ramanababu/Downloads/NonInteractingTanks-20260821T053736Z-1-001/NonInteractingTanks/Tank.mo","lineStart":5,"lineEnd":5,"colStart":1,"colEnd":11}},"index":2},
+"der(tank2.h)":{"comment":"","kind":"derivative","type":"Real","unit":"","displayUnit":"","source":{"info":{"file":"/home/ramanababu/Downloads/NonInteractingTanks-20260821T053736Z-1-001/NonInteractingTanks/Tank2.mo","lineStart":4,"lineEnd":4,"colStart":1,"colEnd":10}},"index":3},
+"tank2.Q1":{"comment":"","kind":"variable","type":"Real","unit":"","displayUnit":"","source":{"info":{"file":"/home/ramanababu/Downloads/NonInteractingTanks-20260821T053736Z-1-001/NonInteractingTanks/Tank2.mo","lineStart":4,"lineEnd":4,"colStart":1,"colEnd":10}},"index":4},
+"tank1.A":{"comment":"","kind":"parameter","type":"Real","unit":"","displayUnit":"","source":{"info":{"file":"/home/ramanababu/Downloads/NonInteractingTanks-20260821T053736Z-1-001/NonInteractingTanks/Tank.mo","lineStart":4,"lineEnd":4,"colStart":1,"colEnd":29}},"index":0},
+"tank1.Qin":{"comment":"","kind":"parameter","type":"Real","unit":"","displayUnit":"","source":{"info":{"file":"/home/ramanababu/Downloads/NonInteractingTanks-20260821T053736Z-1-001/NonInteractingTanks/Tank.mo","lineStart":4,"lineEnd":4,"colStart":1,"colEnd":29}},"index":1},
+"tank2.A":{"comment":"","kind":"parameter","type":"Real","unit":"","displayUnit":"","source":{"info":{"file":"/home/ramanababu/Downloads/NonInteractingTanks-20260821T053736Z-1-001/NonInteractingTanks/Tank2.mo","lineStart":3,"lineEnd":3,"colStart":1,"colEnd":27}},"index":2},
+"tank2.V":{"comment":"","kind":"parameter","type":"Real","unit":"","displayUnit":"","source":{"info":{"file":"/home/ramanababu/Downloads/NonInteractingTanks-20260821T053736Z-1-001/NonInteractingTanks/Tank2.mo","lineStart":3,"lineEnd":3,"colStart":1,"colEnd":27}},"index":3}
+},
+"equations":[{"eqIndex":0,"tag":"dummy"},
+{"eqIndex":1,"section":"initial","tag":"assign","defines":["tank2.h"],"uses":["$START.tank2.h"],"equation":["$START.tank2.h"],"source":{"info":{"file":"","lineStart":0,"lineEnd":0,"colStart":0,"colEnd":0}}},
+{"eqIndex":2,"section":"initial","tag":"assign","defines":["tank1.h"],"uses":["$START.tank1.h"],"equation":["$START.tank1.h"],"source":{"info":{"file":"","lineStart":0,"lineEnd":0,"colStart":0,"colEnd":0}}},
+{"eqIndex":3,"tag":"alias","equation":[6],"section":"initial"},
+{"eqIndex":4,"tag":"alias","equation":[8],"section":"initial"},
+{"eqIndex":5,"tag":"alias","equation":[7],"section":"initial"},
+{"eqIndex":6,"section":"regular","tag":"assign","defines":["tank2.Q1"],"uses":["tank1.h","time"],"equation":["if time <= 5.0 then 0.0 else sqrt(tank1.h)"],"source":{"info":{"file":"","lineStart":0,"lineEnd":0,"colStart":0,"colEnd":0}}},
+{"eqIndex":7,"section":"regular","tag":"assign","defines":["der(tank1.h)"],"uses":["tank1.A","tank2.Q1","tank1.Qin"],"equation":["(tank1.Qin - tank2.Q1) / tank1.A"],"source":{"info":{"file":"/home/ramanababu/Downloads/NonInteractingTanks-20260821T053736Z-1-001/NonInteractingTanks/Tank.mo","lineStart":10,"lineEnd":10,"colStart":1,"colEnd":22}}},
+{"eqIndex":8,"section":"regular","tag":"assign","defines":["der(tank2.h)"],"uses":["tank2.A","tank2.Q1"],"equation":["tank2.Q1 / tank2.A"],"source":{"info":{"file":"/home/ramanababu/Downloads/NonInteractingTanks-20260821T053736Z-1-001/NonInteractingTanks/Tank2.mo","lineStart":9,"lineEnd":9,"colStart":1,"colEnd":16}}}
+],
+"functions":[
+]
+}
