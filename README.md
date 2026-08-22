@@ -106,6 +106,17 @@ the exit code and the full stderr is visible in the log panel.
   spec — step size and other simulation flags are not exposed in the UI.
 - Tested only on Linux; Windows paths/executables are not yet verified.
 
+## Screenshots
+
+**App at rest:**
+
+
+**A successful run:**
+
+
+**Validation catching an invalid input before launch:**
+
+
 ## Repository layout
 
 \`\`\`
