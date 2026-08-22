@@ -22,36 +22,36 @@ launch, rather than failing inside the simulation.
 
 ## How do I install and run it?
 
-\`\`\`bash
+```bash
 git clone https://github.com/pragadaramanababu/openmodelica-pyqt-runner.git
 cd openmodelica-pyqt-runner
 pip install PyQt6 --break-system-packages
 cd app
 python3 main.py
-\`\`\`
+```
 
 The GUI window will open. Click **Browse**, select the executable in
-\`model/artifacts/\`, enter a start time and stop time, and click **Run**.
+`model/artifacts/`, enter a start time and stop time, and click **Run**.
 
 ## How do I obtain/compile the model executable?
 
-The original Modelica source package (\`NonInteractingTanks\`, containing
-the \`TwoConnectedTanks\` model) was provided as part of the task. It was
-compiled using OpenModelica's \`omc\` compiler:
+The original Modelica source package (`NonInteractingTanks`, containing
+the `TwoConnectedTanks` model) was provided as part of the task. It was
+compiled using OpenModelica's `omc` compiler:
 
-\`\`\`bash
+```bash
 omc run_sim.mos
-\`\`\`
+```
 
-where \`run_sim.mos\` is a small script that loads \`package.mo\` and calls
-\`simulate(NonInteractingTanks.TwoConnectedTanks, ...)\`. This produces the
-executable and its dependent files (\`_init.xml\`, \`_info.json\`, \`_JacA.bin\`,
-\`_external_functions.json\`), all of which are included in
-\`model/artifacts/\` in this repository.
+where `run_sim.mos` is a small script that loads `package.mo` and calls
+`simulate(NonInteractingTanks.TwoConnectedTanks, ...)`. This produces the
+executable and its dependent files (`_init.xml`, `_info.json`, `_JacA.bin`,
+`_external_functions.json`), all of which are included in
+`model/artifacts/` in this repository.
 
-**Note:** the original \`Tank2.mo\` model contained a bug — a residence-time
-diagnostic variable \`T = V/Q1\` that divided by zero at initialization
-(since flow \`Q1\` starts at 0 before the system reaches steady state). This
+**Note:** the original `Tank2.mo` model contained a bug — a residence-time
+diagnostic variable `T = V/Q1` that divided by zero at initialization
+(since flow `Q1` starts at 0 before the system reaches steady state). This
 variable was unused elsewhere in the model, so it was removed rather than
 guarded, since a guard clause did not resolve the compiler's own
 division-safety assertion during equation flattening. See "Limitations"
@@ -61,23 +61,23 @@ below.
 
 The app builds and passes exactly:
 
-\`\`\`
+```
 <executable_path> -startTime=<start> -stopTime=<stop>
-\`\`\`
+```
 
-For example: \`./NonInteractingTanks.TwoConnectedTanks -startTime=0 -stopTime=4\`
+For example: `./NonInteractingTanks.TwoConnectedTanks -startTime=0 -stopTime=4`
 
 ## What does a successful run produce?
 
 The log panel streams the executable's stdout/stderr live, ending with:
 
-\`\`\`
+```
 LOG_SUCCESS | info | The initialization finished successfully without homotopy method.
 LOG_SUCCESS | info | The simulation finished successfully.
-\`\`\`
+```
 
 The status bar shows **"Finished successfully (exit code 0)"**, and a
-\`.mat\` result file is written next to the executable.
+`.mat` result file is written next to the executable.
 
 ## How are invalid inputs and process errors handled?
 
@@ -97,8 +97,8 @@ the exit code and the full stderr is visible in the log panel.
 
 ## What limitations remain?
 
-- The \`NonInteractingTanks\` package contains two harmless, unrelated
-  Modelica warnings ("connector \`flowConnect\` is not balanced") from the
+- The `NonInteractingTanks` package contains two harmless, unrelated
+  Modelica warnings ("connector `flowConnect` is not balanced") from the
   original model design — these do not affect simulation correctness and
   were left as-is, since fixing them would mean redesigning the provided
   model rather than wrapping it.
@@ -110,16 +110,19 @@ the exit code and the full stderr is visible in the log panel.
 
 **App at rest:**
 
+![Empty app](docs/screenshots/01-empty-app.png)
 
 **A successful run:**
 
+![Successful run](docs/screenshots/02-successful-run.png)
 
 **Validation catching an invalid input before launch:**
 
+![Validation error](docs/screenshots/03-validation-error.png)
 
 ## Repository layout
 
-\`\`\`
+```
 openmodelica-pyqt-runner/
 ├── app/
 │   ├── main.py           # entry point
@@ -131,4 +134,4 @@ openmodelica-pyqt-runner/
 │   └── artifacts/        # compiled executable + dependent files
 ├── tests/                # unit tests for validation logic
 └── README.md
-\`\`\`
+```
